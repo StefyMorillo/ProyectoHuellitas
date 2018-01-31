@@ -16,8 +16,6 @@ public class Historial implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HISTORIAL_IDHISTORIAL_GENERATOR", sequenceName="SEQ_HISTORIAL")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HISTORIAL_IDHISTORIAL_GENERATOR")
 	@Column(name="id_historial", unique=true, nullable=false)
 	private Integer idHistorial;
 

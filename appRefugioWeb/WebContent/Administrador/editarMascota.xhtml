@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<b:column col-lg="2">
+		<h:form>
+			<p:menu>
+				<p:submenu label="Menú">
+					<p:menuitem value="Usuarios" icon="ui-icon-person"
+						outcome="/Administrador/ListaUsuario" />
+					<p:menuitem value="Adoptados" icon="ui-icon-document-b" />
+					<p:menuitem value="Mascotas" icon="ui-icon-clipboard" outcome="/Administrador/ListaMascota" />
+					<p:menuitem value="Veterinaria" icon="ui-icon-suitcase" />
+					<p:menuitem value="Reservados" icon="ui-icon-disk" />
+					<p:menuitem value="Seguimiento" icon="ui-icon-contact" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</b:column>
+	<b:column col-lg="10">
+		<h:form style="padding-left:10%;padding-top:3%;width:60%">
+			<p:panel header="Actualizar Datos" style="border:0px;">
+				<p:growl autoUpdate="true"></p:growl>
+				<h:panelGrid columns="4">
+					<h:outputText value="Caracterizticas" />
+					<p:inputText value="#{controllerMascota.caracteristicas_mascota}"
+						 />
+
+					<h:outputText value="Edad:" />
+					<p:inputText value="#{controllerMascota.edad_mascota}"
+						 />
+
+					<h:outputText value="Sexo:  " />
+					<h:selectOneMenu value="#{controllerMascota.sexo_mascota}">
+						<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+						<f:selectItem itemValue="H" itemLabel="Hembra" />
+						<f:selectItem itemValue="M" itemLabel="Macho" />
+					</h:selectOneMenu>
+
+
+					<h:outputText value="Observaciones: " />
+					<p:inputText value="#{controllerMascota.observaciones_mascota}"
+						 />
+						 
+						<h:outputText value="Especie:" />
+						<b:selectOneMenu value="#{controllerMascota.id_especie_raza}"
+							id="lstespecie">
+							<f:selectItems value="#{controllerMascota.listaEspecieRaza}" var="int"
+								itemLabel="#{int.especieAnimal}" itemValue="#{int.idEspecieRaza}" id="list">
+								</f:selectItems>
+						</b:selectOneMenu>
+				
+						<h:outputText value="Condiciones ingreso:" />
+						<b:selectOneMenu value="#{controllerMascota.id_condiciones_mascota}"
+							id="lstcondiciones">
+							<f:selectItems value="#{controllerMascota.listaCondicones}" var="in"
+								itemLabel="#{in.descripcionCondiciones}" itemValue="#{in.idCondicionesMascota}" id="lista"></f:selectItems>
+						</b:selectOneMenu>
+
+				
+					
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Actualizar"
+				action="#{controllerMascota.ActualizarMascota()}"></p:commandButton>
+		</h:form>
+	</b:column>
+</h:body>
+</html>

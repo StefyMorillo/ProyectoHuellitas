@@ -17,8 +17,6 @@ public class Mascota implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MASCOTA_IDMASCOTA_GENERATOR", sequenceName="SEQ_MASCOTA")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MASCOTA_IDMASCOTA_GENERATOR")
 	@Column(name="id_mascota", unique=true, nullable=false)
 	private Integer idMascota;
 

@@ -1,5 +1,6 @@
 package refugio.model.manager;
 
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,12 +8,16 @@ import java.util.regex.Pattern;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import refugio.model.entities.Usuario;
 import refugio.model.entities.Adoptante;
+import refugio.model.entities.CondicionesMascota;
+import refugio.model.entities.EspecieRaza;
+import refugio.model.entities.Mascota;
 
 @Stateless
 @LocalBean
@@ -44,7 +49,7 @@ public class ManagerRefugio {
 				throw new Exception("Correo incorrecto");
 			}
 		} else {
-			throw new Exception("Cédula incorrecta");
+			throw new Exception("Cedula incorrecta");
 		}
 
 	}
@@ -102,8 +107,6 @@ public class ManagerRefugio {
 		if (adop != null) {
 			throw new Exception("Ya está registrado");
 		}
-		if (validadorDeCedula(cedula_adoptante)) {
-			if (validarCorreo(email_adoptante)) {
 		Adoptante a = new Adoptante();
 		a.setCedulaAdoptante(cedula_adoptante);
 		a.setNombreAdoptante(nombre_adoptante);
@@ -115,13 +118,7 @@ public class ManagerRefugio {
 		a.setOcupacionAdoptante(ocupacion_adoptante);
 		a.setDireccionAdoptante(direccion_adoptante);
 		em.persist(a);
-			} else {
-				throw new Exception("Correo incorrecto");
-			}
-		} else {
-			throw new Exception("Cédula incorrecta");
-		}
-		}
+	}
 
 	public Adoptante findAdoptante(String cedula_adoptante) throws Exception {
 		Adoptante a = em.find(Adoptante.class, cedula_adoptante);
@@ -158,6 +155,73 @@ public class ManagerRefugio {
 		if (a == null)
 			throw new Exception("No existe la persona especificada");
 		managerdao.eliminar(Adoptante.class, cedula_adoptante);
+	}
+	
+	//// REGISTRAR- MASCOTA
+	public void registrarMascota(String caracteristicas_mascota, int edad_mascota,
+			String observaciones_mascota, String sexo_mascota, int id_condiciones_mascota,
+			int id_especie_raza) throws Exception {
+		
+		Mascota m = new Mascota();
+		CondicionesMascota c = findCondicionesMascota(id_condiciones_mascota);
+		EspecieRaza e = findEspecieRaza(id_especie_raza);
+		
+		m.setCaracteristicasMascota(caracteristicas_mascota);
+		m.setEdadMascota(edad_mascota);
+		m.setFechaIngresoMascota(new Date());
+		m.setObservacionesMascota(observaciones_mascota);
+		m.setSexoMascota(sexo_mascota);
+		m.setCondicionesMascota(c);
+		m.setEspecieRaza(e);
+		em.persist(m);
+	}
+	public Mascota findMascota(int id_mascota) throws Exception {
+		Mascota m = em.find(Mascota.class, id_mascota);
+		return m;
+	}
+	public CondicionesMascota findCondicionesMascota(int id_condiciones_mascota) throws Exception {
+		CondicionesMascota c = em.find(CondicionesMascota.class, id_condiciones_mascota);
+		return c;
+	}
+	
+	public EspecieRaza findEspecieRaza(int id_especie_raza) throws Exception {
+		EspecieRaza e = em.find(EspecieRaza.class, id_especie_raza);
+		return e;
+	}
+	
+	//ACTUALIZAR- MASCOTA
+	public void ActualizarMascota(int id_mascota, String caracteristicas_mascota, int edad_mascota, 
+			String observaciones_mascota, String sexo_mascota, int id_condiciones_mascota,
+			int id_especie_raza) throws Exception {		
+		Mascota m = findMascota(id_mascota);
+		CondicionesMascota c = findCondicionesMascota(id_condiciones_mascota);
+		EspecieRaza e = findEspecieRaza(id_especie_raza);		
+		m.setCaracteristicasMascota(caracteristicas_mascota);
+		m.setEdadMascota(edad_mascota);
+		m.setFechaIngresoMascota(new Date());
+		m.setObservacionesMascota(observaciones_mascota);
+		m.setSexoMascota(sexo_mascota);
+		m.setCondicionesMascota(c);
+		m.setEspecieRaza(e);
+		em.merge(m);
+	}
+	@SuppressWarnings("unchecked")
+	public List<Mascota> findAllMascota() {
+		Query q = em.createQuery("select a from Mascota a order by a.idMascota");
+		List<Mascota> lista = q.getResultList();
+		return lista;
+	}
+	@SuppressWarnings("unchecked")
+	public List<CondicionesMascota> findAllCondicionesMascota() {
+		Query q = em.createQuery("select a from CondicionesMascota a order by a.idCondicionesMascota");
+		List<CondicionesMascota> lista = q.getResultList();
+		return lista;
+	}
+	@SuppressWarnings("unchecked")
+	public List<EspecieRaza> findAllEspecieRaza() {
+		Query q = em.createQuery("select a from EspecieRaza a order by a.idEspecieRaza");
+		List<EspecieRaza> lista = q.getResultList();
+		return lista;
 	}
 
 	// Validaciones

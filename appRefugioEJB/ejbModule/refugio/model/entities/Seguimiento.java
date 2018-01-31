@@ -16,8 +16,6 @@ public class Seguimiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SEGUIMIENTO_IDSEGUIMIENTO_GENERATOR", sequenceName="SEQ_SEGUIMIENTO")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEGUIMIENTO_IDSEGUIMIENTO_GENERATOR")
 	@Column(name="id_seguimiento", unique=true, nullable=false)
 	private Integer idSeguimiento;
 

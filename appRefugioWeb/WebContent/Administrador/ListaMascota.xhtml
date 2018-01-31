@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+
+<h:head>
+</h:head>
+<h:body>
+	<b:column col-lg="2">
+		<h:form>
+			<p:menu>
+				<p:submenu label="Menú">
+					<p:menuitem value="Usuarios" icon="ui-icon-person"
+						outcome="/Administrador/ListaUsuario" />
+					<p:menuitem value="Adoptados" icon="ui-icon-document-b" />
+					<p:menuitem value="Mascotas" icon="ui-icon-clipboard" />
+					<p:menuitem value="Veterinaria" icon="ui-icon-suitcase" />
+					<p:menuitem value="Reservados" icon="ui-icon-disk" />
+					<p:menuitem value="Seguimiento" icon="ui-icon-contact" />
+				</p:submenu>
+			</p:menu>
+			<b:commandButton value="Salir"
+				actionListener="#{controllerLogin.actionSalir()}"></b:commandButton>
+		</h:form>
+	</b:column>
+	<b:column col-lg="10">
+		<h:form style="padding-left:10%;padding-top:3%;padding-right:10%">
+			<b:row>
+				<b:column col-lg="10">
+					<h1>Lista de mascota</h1>
+				</b:column>
+				<b:column col-lg="2">
+					<p:commandButton action="mascota" value="Agregar Mascota"></p:commandButton>
+				</b:column>
+			</b:row>
+			<p:dataTable value="#{controllerMascota.listaMascotas}" var="mascota">
+				<p:column style="width:75%">
+		               Caracteristicas:&nbsp;#{mascota.caracteristicasMascota}&nbsp;Edad:&nbsp;#{mascota.edadMascota}<br />
+					<h6>Especie:&nbsp;#{mascota.especieRaza.especieAnimal}&nbsp;&nbsp;&nbsp;&nbsp;Sexo:&nbsp;#{mascota.sexoMascota}&nbsp;&nbsp;&nbsp;&nbsp;Condiciones:&nbsp;#{mascota.condicionesMascota.descripcionCondiciones}</h6>
+				</p:column>
+				<p:column>
+					<p:commandButton
+						action="#{controllerMascota.cargarMascota(mascota)}"
+						value="Editar"></p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</b:column>
+</h:body>
+</html>

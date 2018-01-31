@@ -16,8 +16,6 @@ public class CondicionesEspacio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CONDICIONES_ESPACIO_IDCONDICIONESESPACIO_GENERATOR", sequenceName="SEQ_CONDICIONES_ESPACIO")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONDICIONES_ESPACIO_IDCONDICIONESESPACIO_GENERATOR")
 	@Column(name="id_condiciones_espacio", unique=true, nullable=false)
 	private Integer idCondicionesEspacio;
 

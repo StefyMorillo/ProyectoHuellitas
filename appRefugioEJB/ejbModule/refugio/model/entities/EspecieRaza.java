@@ -16,8 +16,6 @@ public class EspecieRaza implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ESPECIE_RAZA_IDESPECIERAZA_GENERATOR", sequenceName="SEQ_ESPECIE_RAZA")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ESPECIE_RAZA_IDESPECIERAZA_GENERATOR")
 	@Column(name="id_especie_raza", unique=true, nullable=false)
 	private Integer idEspecieRaza;
 

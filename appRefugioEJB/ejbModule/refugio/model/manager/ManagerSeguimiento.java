@@ -1,5 +1,6 @@
 package refugio.model.manager;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -46,16 +47,9 @@ public class ManagerSeguimiento {
 		Query t;
 		List<Seguimiento> lista;
 		String sentenciaSQL;
-		sentenciaSQL = "SELECT s FROM Seguimiento s ORDER BY s.idSeguimiento";
+		sentenciaSQL = "SELECT s FROM Seguimiento s ORDER BY s.id_seguimiento";
 		t = em.createQuery(sentenciaSQL);
 		lista = t.getResultList();
 		return lista;
 	}
-    
-    public int numeroSeguimiento(int id_seguimiento) {
-    	Query t;
-		t = em.createQuery("SELECT max(idSeguimiento) FROM Seguimiento");
-		id_seguimiento = t.getFirstResult();
-    	return id_seguimiento;
-    }
 }

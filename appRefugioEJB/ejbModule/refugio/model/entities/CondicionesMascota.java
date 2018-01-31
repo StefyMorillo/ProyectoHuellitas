@@ -16,8 +16,6 @@ public class CondicionesMascota implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="CONDICIONES_MASCOTA_IDCONDICIONESMASCOTA_GENERATOR", sequenceName="SEQ_CONDICIONES_MASCOTA")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONDICIONES_MASCOTA_IDCONDICIONESMASCOTA_GENERATOR")
 	@Column(name="id_condiciones_mascota", unique=true, nullable=false)
 	private Integer idCondicionesMascota;
 
