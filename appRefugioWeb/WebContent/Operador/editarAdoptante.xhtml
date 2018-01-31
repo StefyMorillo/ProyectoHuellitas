@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<f:metadata>
+	<f:event listener="#{controllerLogin.actionComprobarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+</h:head>
+<h:body>
+	<b:column col-lg="2">
+		<h:form>
+			<p:menu>
+				<p:submenu label="Menú">
+					
+					<p:menuitem value="Adoptantes" action="/Adoptante
+					/ListaAdoptante"
+						icon="ui-icon-document-b" />
+					<p:menuitem value="Mascotas" icon="ui-icon-clipboard" />
+					<p:menuitem value="Veterinaria" icon="ui-icon-suitcase" />
+					<p:menuitem value="Reservados" icon="ui-icon-disk" />
+					<p:menuitem value="Seguimiento"
+						action="/Seguimiento/seguimiento.xhtml" icon="ui-icon-contact" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+	</b:column>
+	<b:column col-lg="10">
+		<h:form style="padding-left:10%;padding-top:3%;width:60%">
+			<p:panel header="Actualizar Datos" style="border:0px;">
+				<p:growl autoUpdate="true"></p:growl>
+				<h:panelGrid columns="4">
+					<h:outputText value="Cédula:" />
+					<p:inputText value="#{controllerAdoptante.cedula_adoptante}"
+						required="true" maxlength="10"
+						requiredMessage="Debe ingresar su cédula" />
+
+					<h:outputText value="Nombres:" />
+					<p:inputText value="#{controllerAdoptante.nombre_adoptante}"
+						required="true" requiredMessage="Debe indicar su nombre" />
+
+					<h:outputText value="Apellidos: " />
+					<p:inputText value="#{controllerAdoptante.apellido_adoptante}"
+						required="true" requiredMessage="Debe indicar su apellido" />
+
+					<h:outputText value="Teléfono: " />
+					<p:inputText value="#{controllerAdoptante.telefono_adoptante}"
+						required="true" maxlength="10"
+						requiredMessage="Debe indicar su número de teléfono" />
+
+					<h:outputText value="Celular " />
+					<p:inputText value="#{controllerAdoptante.celular_adoptante}"
+						required="true" maxlength="10"
+						requiredMessage="Debe indicar su número de teléfono" />
+
+
+					<h:outputText value="Email: " />
+					<p:inputText value="#{controllerAdoptante.email_adoptante}"
+						required="true" requiredMessage="Debe indicar su e-mail" />
+
+					<h:outputText value="Edad: " />
+					<p:inputText value="#{controllerAdoptante.edad_adoptante}"
+						required="true" type="number"
+						requiredMessage="Debe indicar su clave" />
+
+					<h:outputText value="Ocupación: " />
+					<p:inputText value="#{controllerAdoptante.ocupacion_adoptante}"
+						required="true" requiredMessage="Debe indicar su e-mail" />
+
+					<h:outputText value="Dirección:" />
+					<p:inputText value="#{controllerAdoptante.direccion_adoptante}"
+						required="true" requiredMessage="Debe indicar su e-mail" />
+
+
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Actualizar"
+				action="#{controllerAdoptante.ActualizarAdoptante()}"></p:commandButton>
+		</h:form>
+	</b:column>
+</h:body>
+</html>

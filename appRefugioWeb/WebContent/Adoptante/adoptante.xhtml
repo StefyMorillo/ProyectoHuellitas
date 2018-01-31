@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script type="text/javascript">
+		function soloLetras(e) {
+			key = e.keyCode || e.which;
+			tecla = String.fromCharCode(key).toLowerCase();
+			letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+			especiales = "8-37-39-46";
+
+			tecla_especial = false
+			for ( var i in especiales) {
+				if (key == especiales[i]) {
+					tecla_especial = true;
+					break;
+				}
+			}
+
+			if (letras.indexOf(tecla) == -1) {
+				if (!tecla_especial)
+					return false;
+			}
+		}
+	</script>
+</h:head>
+<body>
+
+
+	<h:form style="padding-left:10%;padding-top:3%;width:50%">
+	<p:growl autoupdate="true" id="message"></p:growl>
+		<p:panel header="Ingrese sus datos personales">
+			<h:panelGrid columns="2">
+				<h:outputText value="Cédula:" />
+				<p:inputText value="#{controllerAdoptante.cedula_adoptante}"
+					required="true" maxlength="10"
+					requiredMessage="Debe ingresar su cédula" />
+				<h:outputText value="Nombres:" />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.nombre_adoptante}"
+					required="true" requiredMessage="Debe indicar su nombre" />
+				<h:outputText value="Apellidos: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.apellido_adoptante}"
+					required="true" requiredMessage="Debe indicar su apellido" />
+				<h:outputText value="Teléfono: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.telefono_adoptante}"
+					required="true" maxlength="10"
+					requiredMessage="Debe indicar su número de teléfono" />
+				<h:outputText value="Celular: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.celular_adoptante}"
+					required="true" maxlength="10"
+					requiredMessage="Debe indicar su número de celular" />
+				<h:outputText value="Email: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.email_adoptante}"
+					required="true" requiredMessage="Debe indicar su e-mail" />
+				<h:outputText value="Edad: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.edad_adoptante}"
+					required="true" type="number"
+					requiredMessage="Debe indicar su edad" />
+				<h:outputText value="Dirección: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.direccion_adoptante}"
+					required="true"
+					requiredMessage="Debe indicar su dirección de residencia" />
+				<h:outputText value="Ocupación: " />
+				<p:inputText style="width:400px" value="#{controllerAdoptante.ocupacion_adoptante}"
+					required="true" requiredMessage="Debe indicar su ocupación" />
+				</h:panelGrid>
+				<h:outputText value="¡IMPORTANTE! Una vez confirmada la reserva, usted tendrá un plazo máximo
+			de 5 dias para acercarse al Refugio y retirar su mascota, ¿Desea confirmar su reserva?" /><br/>
+			
+			
+			<p:commandButton value="CONFIRMAR" styleClass="ui-widget-header"
+				actionListener="#{controllerAdoptante.actionRegistrar()}" update="message"></p:commandButton>
+				
+			
+		</p:panel>
+	</h:form>
+
+
+
+</body>
+</html>

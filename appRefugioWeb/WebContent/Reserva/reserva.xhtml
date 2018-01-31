@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+	<p:growl autoUpdate="true"></p:growl>
+	<p:panel header="Datos de Reserva">
+		<h:form>
+			<p:panelGrid >
+				<p:row>
+					<p:column colspan="4" styleClass="ui-widget-header" style="font-weight: bold;">Adoptante</p:column>
+					<p:column colspan="2" styleClass="ui-widget-header" style="font-weight: bold;">Mascota</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Cédula: </p:column>
+					<p:column><p:outputLabel/>0401722459</p:column>
+					<p:column colspan="2" rowspan="9" style="width:50px"></p:column>
+					<p:column>Código: </p:column>
+					<p:column><p:outputLabel/></p:column>
+				</p:row>
+				<p:row>
+					<p:column>Nombres: </p:column>
+					<p:column><p:outputLabel/>Stefy</p:column>
+					<p:column>Adoptado:</p:column>
+					<p:column>
+						<p:selectOneMenu>
+							<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+							<f:selectItem itemValue="S" itemLabel="SI" />
+							<f:selectItem itemValue="S" itemLabel="NO" />
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>Apellidos: </p:column>
+					<p:column><p:outputLabel/>Morillo</p:column>
+					<p:column colspan="2" rowspan="6">
+						<p:commandButton icon="ui-icon-check" value="GUARDAR CAMBIOS" 
+						actionListener=" "
+						update="@form"></p:commandButton>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Teléfono: </p:column>
+					<p:column><p:outputLabel/>985-456</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Celular: </p:column>
+					<p:column><p:outputLabel/>0977867554</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Dirección: </p:column>
+					<p:column><p:outputLabel/>Teodoro y Bolívar</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Correo: </p:column>
+					<p:column><p:outputLabel/>stefy25@gmail.com</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Ocupación: </p:column>
+					<p:column><p:outputLabel/>Estudiante de ingeñería</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</p:panel>
+</body> 
+</html>

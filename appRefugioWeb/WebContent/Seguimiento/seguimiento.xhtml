@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">  
+
+<h:head></h:head> 
+<body> 
+	<p:growl autoUpdate="true"></p:growl>
+	<p:panel header="Seguimiento de Mascotas">
+		<h:form>
+			<p:panelGrid>
+				<p:row>
+					<p:column styleClass="ui-widget-header">Seguimiento N° </p:column>
+					<p:column>
+						<p:outputLabel value="#{controllerSeguimiento.id_seguimiento}"/>
+					</p:column>
+					<p:column styleClass="ui-widget-header">Códido de registro de mascota: </p:column>
+					<p:column>
+						<p:inputText />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2"></p:column>
+					<p:column colspan="2"></p:column>
+				</p:row>
+				<p:row>
+					<p:column style="font-weight: bold;">Fecha de Seguimiento: </p:column>
+					<p:column>
+						<p:outputLabel value="#{controllerSeguimiento.fecha_seguimiento}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</p:outputLabel>
+					</p:column>
+					<p:column colspan="2" style="font-weight: bold;">Observaciones: </p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2"></p:column>
+					<p:column colspan="2" rowspan="5"><p:inputTextarea rows="7" cols="55" /></p:column>
+				</p:row>
+				<p:row>
+				<p:column>Estado de la Mascota:</p:column>
+					<p:column>
+						<p:selectOneMenu >
+							<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+							<f:selectItem itemValue="B" itemLabel="Bueno" />
+							<f:selectItem itemValue="M" itemLabel="Malo" />
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Espacio Asignado:</p:column>
+					<p:column>
+						<p:selectOneMenu>
+							<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." />
+							<f:selectItem itemValue="A" itemLabel="Adecuado" />
+							<f:selectItem itemValue="I" itemLabel="Inadecuado" />
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2" rowspan="2" styleClass="ui-widget-header">
+						<p:commandButton value="GUARDAR CAMBIOS" icon="ui-icon-check"
+						actionListener="#{controllerSeguimiento.actionListenerAgregarSeguimiento()}"
+						update="@form"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</p:panel>
+</body> 
+</html>

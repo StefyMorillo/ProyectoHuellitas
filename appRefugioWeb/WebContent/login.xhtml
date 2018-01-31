@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form prependId="false" style="padding-top:15%">
+		<b:growl />
+		<b:column col-lg="4" col-md="2" col-xs="0"></b:column>
+		<b:column col-lg="4" col-xs="12" col-md="8">
+			<b:panel title="Ingrese sus datos" collapsible="false">
+				<b:row>
+					<b:column medium-screen="12">
+						<b:inputText placeholder="Ingrese su Cedula" id="username"
+							value="#{controllerLogin.cedulaUsuario}" ajax="true"
+							required="true" required-message="Ingrese su cedula"
+							autocomplete="false" type="number">
+							<f:facet name="prepend">
+								<b:icon name="user" />
+							</f:facet>
+						</b:inputText>
+						<b:inputSecret placeholder="Ingrese su Contraseña" id="password"
+							value="#{controllerLogin.claveUsuario}" ajax="true"
+							autocomplete="false" required="true"
+							required-message="Ingrese la Contraseña">
+							<f:facet name="prepend">
+								<b:iconAwesome name="key" />
+							</f:facet>
+						</b:inputSecret>
+					</b:column>
+				</b:row>
+
+				<b:row>
+					<b:column span="4">
+						<b:commandButton value="Ingresar"
+							actionListener="#{controllerLogin.actionLogin()}"
+							style="width:100%" />
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:column>
+	</h:form>
+</h:body>
+</html>
