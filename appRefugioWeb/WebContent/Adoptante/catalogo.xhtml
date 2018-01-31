@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<body>
+	<p:messages autoUpdate="true"></p:messages>
+	<h:panelGrid columns="2">
+
+
+		<h:form id="form2">
+			<p:panel header="Mascotas disponibles">
+				<p:dataTable value="#{controllerMascota.listaMascotas}" var="a"
+					id="tabla1">
+					<p:column headerText="Especie">
+						<h:outputText value="#{a.especieRaza.especieAnimal}" />
+					</p:column>
+					<p:column headerText="Característca">
+						<h:outputText value="#{a.caracteristicasMascota}" />
+					</p:column>
+					<p:column headerText="Edad">
+						<h:outputText value="#{a.edadMascota}" />
+					</p:column>
+					<p:column headerText="Sexo">
+						<h:outputText value="#{a.sexoMascota}" />
+					</p:column>
+					
+					<p:column>
+		        <p:commandButton value = "Reservar" action="adoptante"></p:commandButton>
+		        </p:column>
+				</p:dataTable>
+				<p:commandButton value="Actualizar" icon="ui-icon-refresh"
+					update="tabla1"
+					actionListener="#{controllerMascota.actionListenerReset()}"></p:commandButton>
+			</p:panel>
+		</h:form>
+	</h:panelGrid>
+	
+</body>
+</html>

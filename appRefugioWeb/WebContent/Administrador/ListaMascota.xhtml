@@ -33,13 +33,14 @@
 					<h1>Lista de mascota</h1>
 				</b:column>
 				<b:column col-lg="2">
-					<p:commandButton action="mascota" value="Agregar Mascota"></p:commandButton>
+					<p:commandButton action="Mascotas" value="Agregar Mascota"></p:commandButton>
 				</b:column>
 			</b:row>
 			<p:dataTable value="#{controllerMascota.listaMascotas}" var="mascota">
 				<p:column style="width:75%">
 		               Caracteristicas:&nbsp;#{mascota.caracteristicasMascota}&nbsp;Edad:&nbsp;#{mascota.edadMascota}<br />
-					<h6>Especie:&nbsp;#{mascota.especieRaza.especieAnimal}&nbsp;&nbsp;&nbsp;&nbsp;Sexo:&nbsp;#{mascota.sexoMascota}&nbsp;&nbsp;&nbsp;&nbsp;Condiciones:&nbsp;#{mascota.condicionesMascota.descripcionCondiciones}</h6>
+					<h6>Especie:&nbsp;#{mascota.especieRaza.especieAnimal}&nbsp;&nbsp;&nbsp;&nbsp;Sexo:&nbsp;#{mascota.sexoMascota}&nbsp;&nbsp;
+					&nbsp;&nbsp;Condiciones:&nbsp;#{mascota.condicionesMascota.descripcionCondiciones}&nbsp;&nbsp;&nbsp;&nbsp;Fecha ingreso:&nbsp;#{mascota.fechaIngresoMascota}</h6>
 				</p:column>
 				<p:column>
 					<p:commandButton
